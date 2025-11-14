@@ -202,4 +202,6 @@ The `/prefixes` endpoint, will return a structure containing all course names pr
 }
 ```
 
+## Extra
 
+Thank you, have fun!
