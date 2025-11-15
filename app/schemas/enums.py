@@ -25,6 +25,7 @@ class DayEnum(str, Enum):
     FRI = "fri"
     SAT = "sat"
     SUN = "sun"
+    ALL = "all"
 
 
 class ClassTypeEnum(str, Enum):

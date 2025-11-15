@@ -1,5 +1,7 @@
 {
     "extraPaths": [
         "./app"
-    ]
+    ],
+    "venvPath": ".",
+    "venv": ".venv"
 }
