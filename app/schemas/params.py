@@ -2,7 +2,7 @@
 
 from pydantic import BaseModel, Field
 
-from schemas.enums import FacultyEnum, DayEnum
+from app.schemas.enums import FacultyEnum, DayEnum
 
 
 class ScheduleParams(BaseModel):

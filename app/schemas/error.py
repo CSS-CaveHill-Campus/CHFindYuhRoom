@@ -1,12 +1,9 @@
 """Application specfic errors will be created here"""
 
+from pydantic import BaseModel
 
-class AppError:
+
+class AppError(BaseModel):
     code: int
     message: str
     type: str
-
-    def __init__(self, code: int, message: str, type: str):
-        self.code = code
-        self.message = message
-        self.type = type
