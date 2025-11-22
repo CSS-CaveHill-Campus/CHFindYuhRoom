@@ -1,5 +1,7 @@
-# CHFindYuhRoom
+# CHRoomFinduh
 This is an API service that will expose information regarding to the availability of classes within the University of the West Indies Cavehill Campus. This is for research purposes only (please don't sue).
+
+For those interested in the challenge, refer to `./CHALLENGE.md`
 
 ## Features
 
@@ -7,10 +9,10 @@ This API will provide the data for classes, alongside options for filters.
 
 There are four endpoints listed as follows:
 
-**/api/v1/schedule**
-**/api/v1/free**
-**/api/v1/rooms**
-**/api/v1/prefixes**
+- **/api/v1/schedule**
+- **/api/v1/free**
+- **/api/v1/rooms**
+- **/api/v1/prefixes**
 
 Note: Each endpoint will only have access to data for the current semester.
 
