@@ -12,6 +12,7 @@ from motor.motor_asyncio import (
 from app.schemas.enums import DayEnum, FacultyEnum
 from app.models import RoomAvailability, Schedule
 from app.models.room import Room
+from models.prefix import Prefix
 
 
 class MongoORM:
@@ -62,24 +63,46 @@ class MongoORM:
         if limit > 0:
             cursor = cursor.limit(limit)
 
-        return cast(
-            list[Schedule], await cursor.to_list(length=limit if limit > 0 else None)
-        )
+        return [
+            Schedule.model_validate(item)
+            for item in await cursor.to_list(length=limit if limit > 0 else None)
+        ]
 
     async def get_all_rooms(self):
         async with aiofiles.open("app/public/rooms.json", mode="r") as f:
             content = await f.read()
-        rooms: list[Room] = cast(list[Room], json.loads(content))
+
+        rooms: list[Room] = [
+            Room.model_validate(item)
+            for item in cast(list[dict[str, str]], json.loads(content))
+        ]
         return rooms
 
-    async def get_prefixes(self, faculty: FacultyEnum | None = None):
+    async def _get_sanitized_prefixes(self) -> list[Prefix]:
         async with aiofiles.open("app/public/prefixes.json", mode="r") as f:
             content = await f.read()
-        data: list[dict[str, str]] = cast(list[dict[str, str]], json.loads(content))
+
+        data: list[Prefix] = [
+            Prefix.model_validate(item)
+            for item in cast(list[dict[str, str]], json.loads(content))
+        ]
+
+        return data
+
+    async def get_prefixes(self, faculty: FacultyEnum | None = None) -> list[str]:
+        results: list[Prefix] = await self._get_sanitized_prefixes()
+        if faculty:
+            return [c.prefix for c in results if c.faculty == faculty.value.upper()]
+        return [c.prefix for c in results]
+
+    async def get_prefix_details(
+        self, faculty: FacultyEnum | None = None
+    ) -> list[Prefix]:
+        results = await self._get_sanitized_prefixes()
 
         if faculty:
-            return [c["prefix"] for c in data if c["faculty"] == faculty.value.upper()]
-        return [c["prefix"] for c in data]
+            return [c for c in results if c.faculty == faculty.value]
+        return results
 
     async def get_room_availabilities(
         self,
@@ -124,7 +147,7 @@ class MongoORM:
         cursor = self.room_availabilities_collection.aggregate(pipeline)
         results = await cursor.to_list()
 
-        return cast(list[RoomAvailability], results)
+        return [RoomAvailability.model_validate(item) for item in results]
 
     def close(self):
         self.client.close()
