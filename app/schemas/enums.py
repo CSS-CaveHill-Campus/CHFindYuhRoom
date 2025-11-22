@@ -15,6 +15,7 @@ class FacultyEnum(str, Enum):
     FMS = "FMS"
     FST = "FST"
     FSS = "FSS"
+    SPORT = "SPORT"
 
 
 class DayEnum(str, Enum):
