@@ -1,10 +1,10 @@
-from fastapi import APIRouter, Depends, Request
+from fastapi import APIRouter, Depends
 from typing import Annotated
 
+from app.db.dependencies import get_db
 from app.db.mongo_client import MongoORM
 from app.schemas.params import ScheduleParams
 from app.schemas import ScheduleSuccessResponse
-from app.schemas.failure_response import FailureResponse
 
 schedule_router = APIRouter(prefix="/schedule")
 
@@ -14,9 +14,18 @@ schedule_router = APIRouter(prefix="/schedule")
     response_model=ScheduleSuccessResponse,
 )
 async def get_schedule(
-    request: Request,
+    db: Annotated[MongoORM, Depends(get_db)],
     params: Annotated[ScheduleParams, Depends()],
 ) -> ScheduleSuccessResponse:
-    db: MongoORM = request.app.state.db
-    schedules = await db.get_schedules(**params.model_dump())
+    schedules = await db.get_schedules(
+        faculty=params.faculty,
+        day=params.day,
+        room=params.room,
+        prefix=params.prefix,
+        **(
+            {"limit": params.limit}
+            if params.limit is not None
+            else {}
+        ),
+    )
     return ScheduleSuccessResponse(data=schedules)

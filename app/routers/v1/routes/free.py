@@ -1,10 +1,10 @@
-from fastapi import APIRouter, Depends, Request
+from fastapi import APIRouter, Depends
 from typing import Annotated
 
+from app.db.dependencies import get_db
 from app.db.mongo_client import MongoORM
 from app.schemas.params import FreeRoomParams
 from app.schemas import FreeRoomSuccessResponse
-from app.schemas.failure_response import FailureResponse
 
 free_router = APIRouter(prefix="/free")
 
@@ -14,10 +14,13 @@ free_router = APIRouter(prefix="/free")
     response_model=FreeRoomSuccessResponse,
 )
 async def get_free_rooms(
-    request: Request,
+    db: Annotated[MongoORM, Depends(get_db)],
     params: Annotated[FreeRoomParams, Depends()],
 ) -> FreeRoomSuccessResponse:
-    db: MongoORM = request.app.state.db
-    free_rooms = await db.get_room_availabilities(**params.model_dump())
-
+    free_rooms = await db.get_room_availabilities(
+        day=params.day,
+        hour=params.hour,
+        duration=params.duration,
+        room=params.room,
+    )
     return FreeRoomSuccessResponse(data=free_rooms)
