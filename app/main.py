@@ -1,6 +1,6 @@
 from contextlib import asynccontextmanager
-from fastapi import FastAPI
-from motor.motor_asyncio import AsyncIOMotorClient, AsyncIOMotorDatabase
+from fastapi import FastAPI, status
+from fastapi.responses import RedirectResponse
 from app.routers import v1_router
 from dotenv import load_dotenv
 from os import getenv
@@ -10,7 +10,7 @@ from app.db.mongo_client import MongoORM
 success: bool = load_dotenv()
 
 if not success:
-    raise RuntimeError("Can not load env file")
+    print("Can not load env file")
 
 
 @asynccontextmanager
@@ -35,4 +35,4 @@ app.include_router(router=v1_router)
 
 @app.get("/")
 async def index():
-    return "Hello world!"
+    return RedirectResponse(url="/docs", status_code=status.HTTP_303_SEE_OTHER)
