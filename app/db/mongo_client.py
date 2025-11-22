@@ -10,7 +10,7 @@ from motor.motor_asyncio import (
 )
 
 from app.schemas.enums import DayEnum, FacultyEnum
-from app.models import Schedule
+from app.models import RoomAvailability, Schedule
 from app.models.room import Room
 
 
@@ -54,9 +54,7 @@ class MongoORM:
 
         if faculty and not prefix:
             faculty_prefixes = await self.get_prefixes(faculty=faculty)
-            query["course_code"] = {
-                "$regex": f"^({'|'.join(faculty_prefixes)})"
-            }
+            query["course_code"] = {"$regex": f"^({'|'.join(faculty_prefixes)})"}
         if prefix:  # Prefix takes precedence
             query["course_code"] = {"$regex": f"^{prefix}"}
 
@@ -68,7 +66,7 @@ class MongoORM:
             list[Schedule], await cursor.to_list(length=limit if limit > 0 else None)
         )
 
-    async def get_rooms(self):
+    async def get_all_rooms(self):
         async with aiofiles.open("app/public/rooms.json", mode="r") as f:
             content = await f.read()
         rooms: list[Room] = cast(list[Room], json.loads(content))
@@ -82,6 +80,51 @@ class MongoORM:
         if faculty:
             return [c["prefix"] for c in data if c["faculty"] == faculty.value.upper()]
         return [c["prefix"] for c in data]
+
+    async def get_room_availabilities(
+        self,
+        day: DayEnum,
+        hour: int | None = None,
+        duration: int | None = None,
+        room: str | None = None,
+    ) -> list[RoomAvailability]:
+        query: dict[str, object] = {"day": day.value}
+
+        if hour:
+            query["available_from"] = hour
+            query["available_to"] = {"$gte": hour + (duration or 1)}
+
+        if room:
+            query["room"] = room
+
+        cursor = self.room_availabilities_collection.find(query, {"_id": 0})
+        pipeline = [
+            {"$match": query},
+            {
+                "$lookup": {
+                    "from": "Rooms",  # Rooms collection name
+                    "localField": "room",  # field from Free Rooms collection
+                    "foreignField": "room",  # matching field in Rooms collection
+                    "as": "room_info",  # output array field
+                }
+            },
+            {"$unwind": "$room_info"},
+            {
+                "$project": {
+                    "_id": 0,
+                    "room": 1,
+                    "day": 1,
+                    "available_from": 1,
+                    "available_to": 1,
+                    "building": "$room_info.building",
+                }
+            },
+        ]
+
+        cursor = self.room_availabilities_collection.aggregate(pipeline)
+        results = await cursor.to_list()
+
+        return cast(list[RoomAvailability], results)
 
     def close(self):
         self.client.close()
