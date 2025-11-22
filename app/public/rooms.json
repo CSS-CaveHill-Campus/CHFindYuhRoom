@@ -1,5 +1,386 @@
 [
-	"LR10",
-	"LR9",
-	"MSR2"
+	{
+		"room": "ML6",
+		"building": "Sagicor Cent for Lifelong Lear"
+	},
+	{
+		"room": "ONLINE",
+		"building": "Cave Hill Online"
+	},
+	{
+		"room": "LT1",
+		"building": "Roy Marshall Teaching Complex"
+	},
+	{
+		"room": "USB01",
+		"building": "Usain Bolt Sports Complex"
+	},
+	{
+		"room": "CLR2",
+		"building": "Codrington College"
+	},
+	{
+		"room": "MSSR-09",
+		"building": "Medical Sciences Faculty Bldg"
+	},
+	{
+		"room": "GF_COMPLAB",
+		"building": "Mutual Building"
+	},
+	{
+		"room": "LT2",
+		"building": "Roy Marshall Teaching Complex"
+	},
+	{
+		"room": "MSR4",
+		"building": "Management Studies"
+	},
+	{
+		"room": "LR9",
+		"building": "CLICO Centre for Teaching Exce"
+	},
+	{
+		"room": "COM_LAB",
+		"building": "CIMH Building"
+	},
+	{
+		"room": "ML5",
+		"building": "Roy Marshall Teaching Complex"
+	},
+	{
+		"room": "LR1",
+		"building": "Roy Marshall Teaching Complex"
+	},
+	{
+		"room": "SEMINAR R",
+		"building": "Law Faculty Building"
+	},
+	{
+		"room": "ICL",
+		"building": "Physics Building"
+	},
+	{
+		"room": "LT4",
+		"building": "CLICO Centre for Teaching Exce"
+	},
+	{
+		"room": "LR3",
+		"building": "Roy Marshall Teaching Complex"
+	},
+	{
+		"room": "BLEXT",
+		"building": "Biology Building"
+	},
+	{
+		"room": "SLT",
+		"building": "Physics Building"
+	},
+	{
+		"room": "AN_HOUSE",
+		"building": "Biology Building"
+	},
+	{
+		"room": "ESCL",
+		"building": "SEED Building"
+	},
+	{
+		"room": "ROBINGR",
+		"building": "Law Faculty Building"
+	},
+	{
+		"room": "LR10",
+		"building": "CLICO Centre for Teaching Exce"
+	},
+	{
+		"room": "MSSR-05",
+		"building": "Medical Sciences Faculty Bldg"
+	},
+	{
+		"room": "None",
+		"building": "New Chemistry Building"
+	},
+	{
+		"room": "None",
+		"building": "None"
+	},
+	{
+		"room": "DANC_STUDI",
+		"building": "E.Barrow Centre for Crea Imagi"
+	},
+	{
+		"room": "FF_CLASS",
+		"building": "Mutual Building"
+	},
+	{
+		"room": "TSR8",
+		"building": "Sagicor Cent for Lifelong Lear"
+	},
+	{
+		"room": "BLDOWN",
+		"building": "Biology Building"
+	},
+	{
+		"room": "LAB DOWN",
+		"building": "Physics Building"
+	},
+	{
+		"room": "MSLT",
+		"building": "Medical Sciences Faculty Bldg"
+	},
+	{
+		"room": "TSR10",
+		"building": "Sagicor Cent for Lifelong Lear"
+	},
+	{
+		"room": "MSSR-07",
+		"building": "Medical Sciences Faculty Bldg"
+	},
+	{
+		"room": "ALT",
+		"building": "Woodville Marshall Building"
+	},
+	{
+		"room": "SOE SEM",
+		"building": "School of Education Building"
+	},
+	{
+		"room": "NCSR",
+		"building": "New Chemistry Building"
+	},
+	{
+		"room": "LLT",
+		"building": "Law Faculty Building"
+	},
+	{
+		"room": "ASR2",
+		"building": "Woodville Marshall Building"
+	},
+	{
+		"room": "CLR3",
+		"building": "Codrington College"
+	},
+	{
+		"room": "S7",
+		"building": "Wendell McClean Building"
+	},
+	{
+		"room": "CINEMA_TH",
+		"building": "E.Barrow Centre for Crea Imagi"
+	},
+	{
+		"room": "LR2",
+		"building": "Roy Marshall Teaching Complex"
+	},
+	{
+		"room": "MSTL",
+		"building": "Medical Sciences Faculty Bldg"
+	},
+	{
+		"room": "ECL",
+		"building": "SEED Building"
+	},
+	{
+		"room": "LR14",
+		"building": "Sagicor Cent for Lifelong Lear"
+	},
+	{
+		"room": "MAC LAB",
+		"building": "E.Barrow Centre for Crea Imagi"
+	},
+	{
+		"room": "ASR1",
+		"building": "Woodville Marshall Building"
+	},
+	{
+		"room": "LR13",
+		"building": "Sagicor Cent for Lifelong Lear"
+	},
+	{
+		"room": "CSL1",
+		"building": "Physics Building"
+	},
+	{
+		"room": "LAB UP",
+		"building": "Physics Building"
+	},
+	{
+		"room": "INORGLAB",
+		"building": "Chemistry Building"
+	},
+	{
+		"room": "S8",
+		"building": "Wendell McClean Building"
+	},
+	{
+		"room": "CSR",
+		"building": "Chemistry Building"
+	},
+	{
+		"room": "BSR",
+		"building": "Biology Building"
+	},
+	{
+		"room": "LR12",
+		"building": "Sagicor Cent for Lifelong Lear"
+	},
+	{
+		"room": "PERF_STUD",
+		"building": "E.Barrow Centre for Crea Imagi"
+	},
+	{
+		"room": "MAIN_CLASS",
+		"building": "CIMH Building"
+	},
+	{
+		"room": "MSSR-06",
+		"building": "Medical Sciences Faculty Bldg"
+	},
+	{
+		"room": "None",
+		"building": "Roy Marshall Teaching Complex"
+	},
+	{
+		"room": "BLUP",
+		"building": "Biology Building"
+	},
+	{
+		"room": "ESL",
+		"building": "Physics Building"
+	},
+	{
+		"room": "MSSR-03",
+		"building": "Medical Sciences Faculty Bldg"
+	},
+	{
+		"room": "MSSR-04",
+		"building": "Medical Sciences Faculty Bldg"
+	},
+	{
+		"room": "TSR9",
+		"building": "Sagicor Cent for Lifelong Lear"
+	},
+	{
+		"room": "MSR1",
+		"building": "Management Studies"
+	},
+	{
+		"room": "LR8",
+		"building": "CLICO Centre for Teaching Exce"
+	},
+	{
+		"room": "MSSR-01",
+		"building": "Medical Sciences Faculty Bldg"
+	},
+	{
+		"room": "USB02",
+		"building": "Usain Bolt Sports Complex"
+	},
+	{
+		"room": "PHYCMLAB",
+		"building": "Chemistry Building"
+	},
+	{
+		"room": "MSSR-10",
+		"building": "Medical Sciences Faculty Bldg"
+	},
+	{
+		"room": "LR6",
+		"building": "CLICO Centre for Teaching Exce"
+	},
+	{
+		"room": "LT3",
+		"building": "Roy Marshall Teaching Complex"
+	},
+	{
+		"room": "USBLT",
+		"building": "Usain Bolt Sports Complex"
+	},
+	{
+		"room": "LAB3",
+		"building": "Physics Building"
+	},
+	{
+		"room": "CLR1",
+		"building": "Codrington College"
+	},
+	{
+		"room": "MSSR-08",
+		"building": "Medical Sciences Faculty Bldg"
+	},
+	{
+		"room": "TSR11",
+		"building": "Sagicor Cent for Lifelong Lear"
+	},
+	{
+		"room": "MSR2",
+		"building": "Management Studies"
+	},
+	{
+		"room": "LR7",
+		"building": "CLICO Centre for Teaching Exce"
+	},
+	{
+		"room": "CSL2",
+		"building": "EDF Building"
+	},
+	{
+		"room": "BIOMEC LAB",
+		"building": "Usain Bolt Sports Complex"
+	},
+	{
+		"room": "TSR7",
+		"building": "Sagicor Cent for Lifelong Lear"
+	},
+	{
+		"room": "LR11",
+		"building": "CLICO Centre for Teaching Exce"
+	},
+	{
+		"room": "ORGLAB",
+		"building": "Chemistry Building"
+	},
+	{
+		"room": "PED_CENTRE",
+		"building": "E.Barrow Centre for Crea Imagi"
+	},
+	{
+		"room": "LR4",
+		"building": "Roy Marshall Teaching Complex"
+	},
+	{
+		"room": "S6",
+		"building": "Wendell McClean Building"
+	},
+	{
+		"room": "ML4",
+		"building": "New Chemistry Building"
+	},
+	{
+		"room": "REH_ROOM",
+		"building": "E.Barrow Centre for Crea Imagi"
+	},
+	{
+		"room": "LL",
+		"building": "Woodville Marshall Building"
+	},
+	{
+		"room": "MSSR-02",
+		"building": "Medical Sciences Faculty Bldg"
+	},
+	{
+		"room": "MSR3",
+		"building": "Management Studies"
+	},
+	{
+		"room": "GF_CLASS",
+		"building": "Mutual Building"
+	},
+	{
+		"room": "LANG_LAB",
+		"building": "Confucius Institute"
+	},
+	{
+		"room": "USB03",
+		"building": "Usain Bolt Sports Complex"
+	}
 ]
