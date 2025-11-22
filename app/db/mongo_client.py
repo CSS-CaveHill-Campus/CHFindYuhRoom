@@ -19,7 +19,10 @@ class MongoORM:
     db: AsyncIOMotorDatabase[dict[str, object]]
     db_name: str
 
-    schedule_collection_name: str = "schedule"
+    schedule_collection_name: str = "schedules"
+    rooms_collection_name: str = "rooms"
+    room_availabilities_collection_name: str = "room_availabilities"
+    course_prefixes_collection_name: str = "course_prefixes"
 
     schedule_collection: AsyncIOMotorCollection[dict[str, object]]
     rooms_collection: AsyncIOMotorCollection[dict[str, object]]
@@ -33,9 +36,11 @@ class MongoORM:
         self.db = self.client.get_database(self.db_name)
 
         self.schedule_collection = self.db[self.schedule_collection_name]
-        self.rooms_collection = self.db["rooms"]
-        self.room_availabilities_collection = self.db["room_availabilities"]
-        self.course_prefixes_collection = self.db["course_prefixes"]
+        self.rooms_collection = self.db[self.rooms_collection_name]
+        self.room_availabilities_collection = self.db[
+            self.room_availabilities_collection_name
+        ]
+        self.course_prefixes_collection = self.db[self.course_prefixes_collection_name]
 
     async def get_schedules(
         self,
@@ -66,7 +71,7 @@ class MongoORM:
             for item in await cursor.to_list(length=limit if limit > 0 else None)
         ]
 
-    async def get_all_rooms(self):
+    async def get_all_rooms(self) -> list[Room]:
         async with aiofiles.open("app/public/rooms.json", mode="r") as f:
             content = await f.read()
 
