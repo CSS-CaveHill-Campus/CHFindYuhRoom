@@ -8,8 +8,8 @@ class Schedule(BaseModel):
     day: DayEnum
     start_time: int
     end_time: int
+    class_type: ClassTypeEnum
     start_date: str  # mm/dd/yyyy
     end_date: str  # mm/dd/yyyy
-    class_type: ClassTypeEnum
     room: str
     building: str
