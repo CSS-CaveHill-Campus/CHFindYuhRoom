@@ -27,3 +27,4 @@ class DayEnum(str, Enum):
     SAT = "sat"
     SUN = "sun"
     ALL = "all"
+    NON = "non"  # Invalid day
