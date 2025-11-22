@@ -27,7 +27,7 @@ async def lifespan(app: FastAPI):
     app.state.db.close()
 
 
-app = FastAPI(title="UWI FindYuhRoom API", lifespan=lifespan)
+app = FastAPI(title="UWI CH RoomFinduh API", lifespan=lifespan)
 
 
 app.include_router(router=v1_router)
