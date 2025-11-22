@@ -1,16 +1,22 @@
-from fastapi import APIRouter, Query
+from fastapi import APIRouter, Depends, Request
 from typing import Annotated
 
+from app.db.mongo_client import MongoORM
 from app.schemas.params import ScheduleParams
 from app.schemas import ScheduleSuccessResponse
 from app.schemas.failure_response import FailureResponse
-from app.schemas.success_response import SuccessResponse
 
 schedule_router = APIRouter(prefix="/schedule")
 
 
-@schedule_router.get("/", responses={404: {"model": FailureResponse}})
+@schedule_router.get(
+    "/",
+    response_model=ScheduleSuccessResponse,
+)
 async def get_schedule(
-    params: Annotated[ScheduleParams, Query()],
+    request: Request,
+    params: Annotated[ScheduleParams, Depends()],
 ) -> ScheduleSuccessResponse:
-    pass  # DB call
+    db: MongoORM = request.app.state.db
+    schedules = await db.get_schedules(**params.model_dump())
+    return ScheduleSuccessResponse(data=schedules)
