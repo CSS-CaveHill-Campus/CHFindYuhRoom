@@ -128,7 +128,7 @@ class MongoORM:
             {"$match": query},
             {
                 "$lookup": {
-                    "from": "Rooms",  # Rooms collection name
+                    "from": "rooms",  # Rooms collection name
                     "localField": "room",  # field from Free Rooms collection
                     "foreignField": "room",  # matching field in Rooms collection
                     "as": "room_info",  # output array field
